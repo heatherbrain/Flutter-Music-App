@@ -146,7 +146,7 @@ const dummyMusic = [
       categories: ['c2'],
       title: 'Do I Wanna Know?',
       imageUrl:
-          'https://tse1.mm.bing.net/th?id=OIP.oNvyfZhdNWWIAwWfmtqE8wHaHa&pid=Api&P=0&h=180',
+          'http://images.genius.com/af4ac59ba9e3e8b0fe70d7c1156ff8f2.1000x1000x1.jpg',
       lyrics: """
       Have you got colour in your cheeks?
       Do you ever get that fear that you can't shift

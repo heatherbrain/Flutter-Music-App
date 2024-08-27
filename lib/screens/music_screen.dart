@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/music.dart';
+import 'package:meals_app/widgets/music_item.dart';
 
 class MusicScreen extends StatelessWidget {
   const MusicScreen({
@@ -43,8 +44,8 @@ class MusicScreen extends StatelessWidget {
     } else {
       content = ListView.builder(
         itemCount: musicScreen.length,
-        itemBuilder: (ctx, index) => Text(
-          musicScreen[index].title,
+        itemBuilder: (ctx, index) => MusicItem(
+          music: musicScreen[index],
         ),
       );
     }
