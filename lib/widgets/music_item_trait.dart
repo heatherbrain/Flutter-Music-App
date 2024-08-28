@@ -14,9 +14,15 @@ class MusicItemTrait extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon),
-        SizedBox(),
-        Text(label),
+        Icon(
+          icon,
+          size: 17,
+          color: Colors.white,
+        ),
+        const SizedBox(width: 6,),
+        Text(label, style: const TextStyle(
+          color: Colors.white,
+        ),),
       ],
     );
   }

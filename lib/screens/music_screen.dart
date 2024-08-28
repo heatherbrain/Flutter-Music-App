@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/music.dart';
+import 'package:meals_app/screens/music_lyrics.dart';
 import 'package:meals_app/widgets/music_item.dart';
 
 class MusicScreen extends StatelessWidget {
@@ -12,6 +13,10 @@ class MusicScreen extends StatelessWidget {
 
   final String title;
   final List<Music> musicScreen;
+
+  void selectMusic(BuildContext context, Music music) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => MusicLyrics (music: music,)),);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +51,9 @@ class MusicScreen extends StatelessWidget {
         itemCount: musicScreen.length,
         itemBuilder: (ctx, index) => MusicItem(
           music: musicScreen[index],
+          onSelectMusic: (music) {
+            selectMusic(context, music);
+          },
         ),
       );
     }
