@@ -48,7 +48,8 @@ const dummyMusic = [
       title: 'Break from Toronto',
       imageUrl:
           'http://images.genius.com/7a26224cb28bb34b65aa954e229506f8.1000x995x1.jpg',
-      lyrics: """That smile on your face
+      lyrics: ["""
+      That smile on your face
       Makes it easy to trust you
       Those in
       Those in
@@ -80,7 +81,7 @@ const dummyMusic = [
 
       West side
       Ohh girl
-      """,
+      """],
       artist: 'PARTYNEXTDOOR',
       duration: Duration(minutes: 4, seconds: 32),
       popularity: Popularity.lessPopular),
@@ -90,7 +91,7 @@ const dummyMusic = [
     title: 'Mr. Loverman',
     imageUrl:
         'https://images.genius.com/75bd532c69ceb88eca65f9e980396525.839x839x1.jpg',
-    lyrics: """
+    lyrics: ["""
       I'm headed straight for the floor
       The alcohol's served its tour
       And it's headed straight for my skin
@@ -135,7 +136,7 @@ const dummyMusic = [
       And I miss my lover, man
       I'm Mr. Loverman
       Oh, and I miss my lover
-      """,
+      """],
     artist: 'Ricky Montgomery', // Sesuaikan dengan nama album yang sebenarnya
     duration: Duration(
         minutes: 3, seconds: 36), // Sesuaikan dengan durasi yang sebenarnya
@@ -147,7 +148,7 @@ const dummyMusic = [
       title: 'Do I Wanna Know?',
       imageUrl:
           'http://images.genius.com/af4ac59ba9e3e8b0fe70d7c1156ff8f2.1000x1000x1.jpg',
-      lyrics: """
+      lyrics:[ """
       Have you got colour in your cheeks?
       Do you ever get that fear that you can't shift
       The type that sticks around like summat in your teeth?
@@ -155,7 +156,8 @@ const dummyMusic = [
       Have you no idea that you're in deep?
       I dreamt about you nearly every night this week
       How many secrets can you keep?
-      'Cause there's this tune I found that makes me think of you somehow and I play it on repeat
+      'Cause there's this tune I found that makes me think of you 
+      somehow and I play it on repeat
       Until I fall asleep
       Spilling drinks on my settee
 
@@ -164,7 +166,8 @@ const dummyMusic = [
       (Sad to see you go)
       Was sort of hoping that you'd stay
       (Baby, we both know)
-      That the nights were mainly made for saying things that you can't say tomorrow day
+      That the nights were mainly made for saying things 
+      that you can't say tomorrow day
 
       Crawling back to you
 
@@ -176,9 +179,11 @@ const dummyMusic = [
       Crawling back to you
 
       So have you got the guts?
-      Been wondering if your heart's still open and if so I wanna know what time it shuts
+      Been wondering if your heart's still open 
+      and if so I wanna know what time it shuts
       Simmer down and pucker up
-      I'm sorry to interrupt. It's just I'm constantly on the cusp of trying to kiss you
+      I'm sorry to interrupt. It's just I'm constantly on the cusp 
+      of trying to kiss you
       I don't know if you feel the same as I do
       But we could be together if you wanted to
 
@@ -187,13 +192,15 @@ const dummyMusic = [
       (Sad to see you go)
       Was sort of hoping that you'd stay
       (Baby, we both know)
-      That the nights were mainly made for saying things that you can't say tomorrow day
+      That the nights were mainly made for saying things 
+      that you can't say tomorrow day
 
       Crawling back to you (crawling back to you)
 
       Ever thought of calling when you've had a few? (you've had a few)
       'Cause I always do ('cause I always do)
-      Maybe I'm too (maybe I'm too busy) busy being yours to fall for somebody new
+      Maybe I'm too (maybe I'm too busy) busy being yours to fall 
+      for somebody new
       Now I've thought it through
 
       Crawling back to you
@@ -211,7 +218,7 @@ const dummyMusic = [
       Ever thought of calling darling?
       (Do I wanna know?)
       Do you want me crawling back to you?
-      """,
+      """],
       artist: 'Arctic Monkeys',
       duration: Duration(minutes: 4, seconds: 33),
       popularity: Popularity.popular),
@@ -220,7 +227,8 @@ const dummyMusic = [
       categories: ['c2', 'c3'],
       title: 'Friends',
       imageUrl: 'https://paroles2chansons.lemonde.fr/lib/images/album/59de885945d7d.jpg',
-      lyrics: """Girl, tell me what you're doing on the other side
+      lyrics: ["""
+      Girl, tell me what you're doing on the other side
       And so, just tell me what you're doing with that other guy
       'Cause I ain't got patience to slow down the pace
       All your girlfriends are wasted
@@ -273,7 +281,7 @@ const dummyMusic = [
       I'm not ready, eyes heavy now
       Wish you'd let me stay, I'm ready now
       I'm not ready, eyes heavy now
-      Wish you'd let me stay, I'm ready now""",
+      Wish you'd let me stay, I'm ready now"""],
       artist: 'Chase Atlantic',
       duration: Duration(minutes: 2, seconds: 55),
       popularity: Popularity.popular),
@@ -282,7 +290,8 @@ const dummyMusic = [
       categories: ['c5'],
       title: 'Wrong About Forever',
       imageUrl: 'https://images.genius.com/14491d4d9e931e3fcbad8a990113b86d.1000x1000x1.jpg',
-      lyrics: """I should have known from the start
+      lyrics: ["""
+      I should have known from the start
       If there would be a day where things would change, babe
       It's just I gave you my heart
       Thinking you would stay but you walk away
@@ -318,10 +327,11 @@ const dummyMusic = [
 
       I'm not saying that you lie (I ain't saying that you lie), but
       Don't be wasting my time (Don't be wasting my time, baby)
-      Confusing me like we'd get back together (Confusing me like we'd get back together)
+      Confusing me like we'd get back together 
+      (Confusing me like we'd get back together)
       Think you, were my ride or die (said you were my ride or die), but
       Leave me for a new guy (leave me for a new guy)
-      I guess that I was wrong about forever""",
+      I guess that I was wrong about forever"""],
       artist: 'Jeff Bernat',
       duration: Duration(minutes: 3, seconds: 35),
       popularity: Popularity.lessPopular),
@@ -330,7 +340,8 @@ const dummyMusic = [
       categories: ['c4'],
       title: 'The Way Life Goes',
       imageUrl: 'https://cdnb.artstation.com/p/assets/images/images/012/936/283/large/adonis-williams-asset.jpg?1537272888',
-      lyrics: """That's true, that's right (Uzi)
+      lyrics: ["""
+      That's true, that's right (Uzi)
       She's sippin' Moet, and yeah I swear it gets her wetter
       My Louboutins new, so my bottoms, they is redder
       No I'm not a rat, but I'm all about my cheddar
@@ -431,7 +442,7 @@ const dummyMusic = [
       Kissin' in the tree
       'Member it was you was just you and me
       K-i-s-s-i-n-g
-      K-i-s-s-i-n-g-e-e-e-e-e-e, uh""",
+      K-i-s-s-i-n-g-e-e-e-e-e-e, uh"""],
       artist: 'Lil Uzi Vert feat. Nicki Minaj',
       duration: Duration(minutes: 3, seconds: 15),
       popularity: Popularity.mostPopular),
@@ -440,7 +451,8 @@ const dummyMusic = [
       categories: ['c1', 'c7'],
       title: 'Girls Need Love',
       imageUrl: 'https://www.musicconnection.com/wp-content/uploads/2021/12/summer-walker-album-artwork.jpeg',
-      lyrics: """Honestly
+      lyrics: ["""
+      Honestly
       Honestly, I'm tryna stay focused
       You must think I've got to be joking when I say
       I don't think I can wait
@@ -487,7 +499,7 @@ const dummyMusic = [
       Girls need love (girls need loving too)
       Girls need love too
       So what's a girl to do when she needs loving too
-      """,
+      """],
       artist: 'Summer Walker',
       duration: Duration(minutes: 3, seconds: 20),
       popularity: Popularity.popular),
@@ -496,7 +508,8 @@ const dummyMusic = [
       categories: ['c1', 'c6'],
       title: 'Good Days',
       imageUrl: 'https://static.stereogum.com/uploads/2020/12/sza-good-days-1608873031.jpg',
-      lyrics: """"Good day in my mind, safe to take a step out
+      lyrics: [""""
+      Good day in my mind, safe to take a step out
       Get some air now, let yo edge out
       Too soon, I spoke
       You be heavy in my mind, can you get the heck out?
@@ -557,7 +570,7 @@ const dummyMusic = [
 
       Always in my mind, always in my mind, mind
       You've been making me feel like I'm
-      Always in my mind, always in my mind, mind""",
+      Always in my mind, always in my mind, mind"""],
       artist: 'SZA',
       duration: Duration(minutes: 5, seconds: 17),
       popularity: Popularity.mostPopular),
@@ -566,7 +579,7 @@ const dummyMusic = [
       categories: ['c6'],
       title: "Don't Tell 'Em",
       imageUrl: 'https://ratedrnb.com/cdn/2023/05/jeremih-dont-tell-em-single-cover.png',
-      lyrics: """
+      lyrics: ["""
       Mustard on the beat, ho
 
       Rhythm is a dancer, I need a companion
@@ -675,7 +688,7 @@ const dummyMusic = [
       Put in on like that, that (that, that)
       I know you like that (that, that, that, that)
       You know I want that (that, that, that, that)
-      Ohh oh-ohh oh-ohh oh-ohh""",
+      Ohh oh-ohh oh-ohh oh-ohh"""],
       artist: 'Jeremih feat.YG',
       duration: Duration(minutes: 3, seconds: 53),
       popularity: Popularity.lessPopular)

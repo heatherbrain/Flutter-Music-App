@@ -9,29 +9,49 @@ class MusicLyrics extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(music.title),
-        ),
-        body: Column(
+      appBar: AppBar(
+        title: Text(music.title),
+      ),
+      body: SingleChildScrollView(
+        // Wrap the entire Column in SingleChildScrollView
+        child: Column(
           children: [
             Image.network(
               music.imageUrl,
-              height: 300,
+              height: 200,
               width: double.infinity,
               fit: BoxFit.cover,
             ),
-            const SizedBox(
-              height: 14,
-            ),
+            const SizedBox(height: 14),
             Text(
               music.title,
-              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
             ),
-            // for (final lyrics in music.lyrics)
-            //   Text(data),
+            const SizedBox(height: 14), // Add some spacing
+            // Wrap the lyrics in another Column without Expanded
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  for (final lyric in music.lyrics)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0),
+                      child: Text(
+                        lyric,
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              color: Theme.of(context).colorScheme.onBackground,
+                            ),
+                      ),
+                    ),
+                ],
+              ),
+            ),
           ],
-        ));
+        ),
+      ),
+    );
   }
 }

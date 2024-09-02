@@ -20,7 +20,7 @@ class Music {
   final List<String> categories;
   final String title;
   final String imageUrl;
-  final String lyrics;
+  final List<String> lyrics;
   final String artist;
   final Duration duration;
   final Popularity popularity;
