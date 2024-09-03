@@ -2,18 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:meals_app/models/music.dart';
 
 class MusicLyrics extends StatelessWidget {
-  const MusicLyrics({super.key, required this.music});
+  const MusicLyrics({super.key, required this.music, required this.onToggleFavorite});
 
   final Music music;
+  final void Function(Music music) onToggleFavorite;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(music.title),
+        actions: [
+          IconButton(
+            onPressed:() {onToggleFavorite(music);},
+            icon: Icon(Icons.star),
+          )
+        ],
       ),
       body: SingleChildScrollView(
-        // Wrap the entire Column in SingleChildScrollView
+        // Wrap the entire Column iFn SingleChildScrollView
         child: Column(
           children: [
             Image.network(

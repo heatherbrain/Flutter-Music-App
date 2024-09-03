@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/music.dart';
 import 'package:meals_app/screens/music_lyrics.dart';
@@ -7,15 +6,24 @@ import 'package:meals_app/widgets/music_item.dart';
 class MusicScreen extends StatelessWidget {
   const MusicScreen({
     super.key,
-    required this.title,
+    this.title,
     required this.musicScreen,
+    required this.onToggleFavorite,
   });
 
-  final String title;
+  final String? title;
   final List<Music> musicScreen;
+    final void Function(Music music) onToggleFavorite;
+
 
   void selectMusic(BuildContext context, Music music) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => MusicLyrics (music: music,)),);
+    Navigator.of(context).push(
+      MaterialPageRoute(
+          builder: (ctx) => MusicLyrics(
+                music: music,
+                onToggleFavorite: onToggleFavorite,
+              )),
+    );
   }
 
   @override
@@ -58,9 +66,13 @@ class MusicScreen extends StatelessWidget {
       );
     }
 
+    if (title == null) {
+      return content;
+    }
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(title!),
       ),
       body: content,
     );
