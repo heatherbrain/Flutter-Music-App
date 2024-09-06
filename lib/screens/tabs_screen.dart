@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/data/dummy_data.dart';
 import 'package:meals_app/models/music.dart';
 import 'package:meals_app/screens/categories_screen.dart';
+import 'package:meals_app/screens/filter_screen.dart';
 import 'package:meals_app/screens/music_screen.dart';
 import 'package:meals_app/widgets/main_drawer.dart';
+
+const kInitialFilter = {
+    Filter.heartBroken: false,
+    Filter.vibing: false,
+  };
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({super.key});
@@ -16,6 +23,7 @@ class TabsScreen extends StatefulWidget {
 class _TabsScreenState extends State<TabsScreen> {
   int _selectPageIndex = 0;
   final List<Music> _favoriteMusics = [];
+  Map<Filter, bool> _selectedFilters = kInitialFilter;
 
   void _showInfoMessage(String message) {
     ScaffoldMessenger.of(context).clearSnackBars();
@@ -45,15 +53,25 @@ class _TabsScreenState extends State<TabsScreen> {
     });
   }
 
-  void _setScreen(String identifier) {
+  void _setScreen(String identifier) async {
+    Navigator.of(context).pop();
+
     if (identifier == 'filters') {
-    } else {
-      Navigator.of(context).pop();
+      final result = await Navigator.of(context).push<Map<Filter, bool>>(
+        MaterialPageRoute(
+          builder: (ctx) => const FilterScreen(),
+        ),
+      );
+      setState(() {
+      _selectedFilters = result ?? kInitialFilter;
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    // final availableMusic = dummyMusic.where((music) {});
+
     Widget activePage = CategoriesScreen(
       onToggleFavorite: _toggleMusicFavoriteStatus,
     );
