@@ -14,6 +14,8 @@ class Music {
     required this.artist,
     required this.duration,
     required this.popularity,
+    required this.isHeartBroken,
+    required this.isVibing,
   });
 
   final String id;
@@ -24,5 +26,6 @@ class Music {
   final String artist;
   final Duration duration;
   final Popularity popularity;
-  
+  final bool isHeartBroken;
+  final bool isVibing;
 }

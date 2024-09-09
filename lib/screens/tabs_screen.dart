@@ -38,7 +38,7 @@ class _TabsScreenState extends State<TabsScreen> {
       setState(() {
         _favoriteMusics.remove(music);
       });
-      _showInfoMessage('Meal is no longer a favorite');
+      _showInfoMessage('Music is no longer a favorite');
     } else {
       setState(() {
         _favoriteMusics.add(music);
@@ -59,7 +59,7 @@ class _TabsScreenState extends State<TabsScreen> {
     if (identifier == 'filters') {
       final result = await Navigator.of(context).push<Map<Filter, bool>>(
         MaterialPageRoute(
-          builder: (ctx) => const FilterScreen(),
+          builder: (ctx) => FilterScreen(currentFilters: _selectedFilters,),
         ),
       );
       setState(() {
@@ -70,10 +70,19 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final availableMusic = dummyMusic.where((music) {});
+    final availableMusic = dummyMusic.where((music) {
+      if(_selectedFilters[Filter.heartBroken]! && !music.isHeartBroken){
+        return false;
+      }
+      if(_selectedFilters[Filter.vibing]! && !music.isVibing){
+        return false;
+      }
+      return true;
+    }).toList();
 
     Widget activePage = CategoriesScreen(
       onToggleFavorite: _toggleMusicFavoriteStatus,
+      availableMusic: availableMusic,
     );
     var activePageTitle = 'Categories';
 

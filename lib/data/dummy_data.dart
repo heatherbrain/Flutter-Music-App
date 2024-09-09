@@ -84,7 +84,10 @@ const dummyMusic = [
       """],
       artist: 'PARTYNEXTDOOR',
       duration: Duration(minutes: 4, seconds: 32),
-      popularity: Popularity.lessPopular),
+      popularity: Popularity.lessPopular,
+      isHeartBroken: false,
+      isVibing: true, 
+      ),
   Music(
     id: 'm2',
     categories: ['c3'],
@@ -140,7 +143,9 @@ const dummyMusic = [
     artist: 'Ricky Montgomery', // Sesuaikan dengan nama album yang sebenarnya
     duration: Duration(
         minutes: 3, seconds: 36), // Sesuaikan dengan durasi yang sebenarnya
-    popularity: Popularity.mostPopular, // Contoh nilai popularitas
+    popularity: Popularity.mostPopular, 
+    isHeartBroken: true,
+      isVibing: false, // Contoh nilai popularitas
   ),
   Music(
       id: 'm3',
@@ -221,7 +226,9 @@ const dummyMusic = [
       """],
       artist: 'Arctic Monkeys',
       duration: Duration(minutes: 4, seconds: 33),
-      popularity: Popularity.popular),
+      popularity: Popularity.popular,
+      isHeartBroken: false,
+      isVibing: true, ),
   Music(
       id: 'm4',
       categories: ['c2', 'c3'],
@@ -284,7 +291,9 @@ const dummyMusic = [
       Wish you'd let me stay, I'm ready now"""],
       artist: 'Chase Atlantic',
       duration: Duration(minutes: 2, seconds: 55),
-      popularity: Popularity.popular),
+      popularity: Popularity.popular,
+      isHeartBroken: true,
+      isVibing: true, ),
   Music(
       id: 'm5',
       categories: ['c5'],
@@ -334,7 +343,9 @@ const dummyMusic = [
       I guess that I was wrong about forever"""],
       artist: 'Jeff Bernat',
       duration: Duration(minutes: 3, seconds: 35),
-      popularity: Popularity.lessPopular),
+      popularity: Popularity.lessPopular,
+      isHeartBroken: true,
+      isVibing: false, ),
   Music(
       id: 'm6',
       categories: ['c4'],
@@ -445,7 +456,9 @@ const dummyMusic = [
       K-i-s-s-i-n-g-e-e-e-e-e-e, uh"""],
       artist: 'Lil Uzi Vert feat. Nicki Minaj',
       duration: Duration(minutes: 3, seconds: 15),
-      popularity: Popularity.mostPopular),
+      popularity: Popularity.mostPopular,
+      isHeartBroken: true,
+      isVibing: true, ),
   Music(
       id: 'm7',
       categories: ['c1', 'c7'],
@@ -502,7 +515,9 @@ const dummyMusic = [
       """],
       artist: 'Summer Walker',
       duration: Duration(minutes: 3, seconds: 20),
-      popularity: Popularity.popular),
+      popularity: Popularity.popular,
+      isHeartBroken: false,
+      isVibing: true, ),
   Music(
       id: 'm8',
       categories: ['c1', 'c6'],
@@ -573,7 +588,9 @@ const dummyMusic = [
       Always in my mind, always in my mind, mind"""],
       artist: 'SZA',
       duration: Duration(minutes: 5, seconds: 17),
-      popularity: Popularity.mostPopular),
+      popularity: Popularity.mostPopular,
+      isHeartBroken: true,
+      isVibing: true, ),
   Music(
       id: 'm9',
       categories: ['c6'],
@@ -691,5 +708,7 @@ const dummyMusic = [
       Ohh oh-ohh oh-ohh oh-ohh"""],
       artist: 'Jeremih feat.YG',
       duration: Duration(minutes: 3, seconds: 53),
-      popularity: Popularity.lessPopular)
+      popularity: Popularity.lessPopular,
+      isHeartBroken: false,
+      isVibing: true, )
 ];

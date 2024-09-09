@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/screens/tabs_screen.dart';
-import 'package:meals_app/widgets/main_drawer.dart';
 
 enum Filter {
   heartBroken,
@@ -8,7 +6,9 @@ enum Filter {
 }
 
 class FilterScreen extends StatefulWidget {
-  const FilterScreen({super.key});
+  const FilterScreen({super.key, required this.currentFilters});
+
+final Map<Filter, bool>currentFilters;
 
   @override
   State<StatefulWidget> createState() {
@@ -19,6 +19,12 @@ class FilterScreen extends StatefulWidget {
 class _FilterScreenState extends State<FilterScreen> {
   var _heartbrokenFilterSet = false;
   var _vibingFilterSet = false;
+  @override
+  void initState() {
+    super.initState();
+    _heartbrokenFilterSet = widget.currentFilters[Filter.heartBroken]!;
+    _vibingFilterSet = widget.currentFilters[Filter.vibing]!;
+  }
 
   @override
   Widget build(BuildContext context) {
