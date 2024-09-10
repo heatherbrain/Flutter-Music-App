@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-enum Filter {
-  heartBroken,
-  vibing,
-}
+import 'package:meals_app/providers/filters_provider.dart';
 
-class FilterScreen extends StatefulWidget {
+class FilterScreen extends ConsumerStatefulWidget {
   const FilterScreen({super.key, required this.currentFilters});
 
 final Map<Filter, bool>currentFilters;
 
   @override
-  State<StatefulWidget> createState() {
+  ConsumerState<FilterScreen> createState() {
     return _FilterScreenState();
   }
 }
 
-class _FilterScreenState extends State<FilterScreen> {
+class _FilterScreenState extends ConsumerState<FilterScreen> {
   var _heartbrokenFilterSet = false;
   var _vibingFilterSet = false;
   @override

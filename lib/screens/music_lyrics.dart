@@ -1,20 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/music.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meals_app/providers/favorites_provider.dart';
 
-class MusicLyrics extends StatelessWidget {
-  const MusicLyrics({super.key, required this.music, required this.onToggleFavorite});
+class MusicLyrics extends ConsumerWidget {
+  const MusicLyrics({
+    super.key,
+    required this.music,
+  });
 
   final Music music;
-  final void Function(Music music) onToggleFavorite;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: Text(music.title),
         actions: [
           IconButton(
-            onPressed:() {onToggleFavorite(music);},
+            onPressed: () {
+              final wasAdedd = ref
+                  .read(favoriteMusicProvider.notifier)
+                  .toggleMusicFavoriteStatus(music);
+                      ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(wasAdedd ? 'Favorited' : 'Removed from favorite'),));
+            },
             icon: Icon(Icons.star),
           )
         ],

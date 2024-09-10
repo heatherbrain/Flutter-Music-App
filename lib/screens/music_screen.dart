@@ -8,12 +8,10 @@ class MusicScreen extends StatelessWidget {
     super.key,
     this.title,
     required this.musicScreen,
-    required this.onToggleFavorite,
   });
 
   final String? title;
   final List<Music> musicScreen;
-    final void Function(Music music) onToggleFavorite;
 
 
   void selectMusic(BuildContext context, Music music) {
@@ -21,7 +19,6 @@ class MusicScreen extends StatelessWidget {
       MaterialPageRoute(
           builder: (ctx) => MusicLyrics(
                 music: music,
-                onToggleFavorite: onToggleFavorite,
               )),
     );
   }
