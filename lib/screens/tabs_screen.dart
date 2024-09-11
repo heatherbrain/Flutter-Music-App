@@ -26,8 +26,6 @@ class TabsScreen extends ConsumerStatefulWidget {
 
 class _TabsScreenState extends ConsumerState<TabsScreen> {
   int _selectPageIndex = 0;
-  Map<Filter, bool> _selectedFilters = kInitialFilter;
-
 
 
   void _selectPage(int index) {
@@ -40,31 +38,17 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
     Navigator.of(context).pop();
 
     if (identifier == 'filters') {
-      final result = await Navigator.of(context).push<Map<Filter, bool>>(
+      await Navigator.of(context).push<Map<Filter, bool>>(
         MaterialPageRoute(
-          builder: (ctx) => FilterScreen(
-            currentFilters: _selectedFilters,
-          ),
+          builder: (ctx) => const FilterScreen(),
         ),
       );
-      setState(() {
-        _selectedFilters = result ?? kInitialFilter;
-      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final musics = ref.watch(musicProvier);
-    final availableMusic = musics.where((music) {
-      if (_selectedFilters[Filter.heartBroken]! && !music.isHeartBroken) {
-        return false;
-      }
-      if (_selectedFilters[Filter.vibing]! && !music.isVibing) {
-        return false;
-      }
-      return true;
-    }).toList();
+    final availableMusic = ref.watch(filteredMusicProvider);
 
     Widget activePage = CategoriesScreen(
       availableMusic: availableMusic,

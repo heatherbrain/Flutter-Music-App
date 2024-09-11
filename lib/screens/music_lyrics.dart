@@ -13,6 +13,9 @@ class MusicLyrics extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final favoriteMusics = ref.watch(favoriteMusicProvider);
+
+    final isFavorite = favoriteMusics.contains(music);
     return Scaffold(
       appBar: AppBar(
         title: Text(music.title),
@@ -22,11 +25,15 @@ class MusicLyrics extends ConsumerWidget {
               final wasAdedd = ref
                   .read(favoriteMusicProvider.notifier)
                   .toggleMusicFavoriteStatus(music);
-                      ScaffoldMessenger.of(context).clearSnackBars();
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(wasAdedd ? 'Favorited' : 'Removed from favorite'),));
+              ScaffoldMessenger.of(context).clearSnackBars();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content:
+                      Text(wasAdedd ? 'Favorited' : 'Removed from favorite'),
+                ),
+              );
             },
-            icon: Icon(Icons.star),
+            icon: Icon(isFavorite ? Icons.star : Icons.star_border),
           )
         ],
       ),

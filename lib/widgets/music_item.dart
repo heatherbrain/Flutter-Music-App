@@ -3,6 +3,9 @@ import 'package:meals_app/models/music.dart';
 import 'package:meals_app/widgets/music_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meals_app/providers/favorites_provider.dart';
+
 String formatDuration(Duration duration) {
   String twoDigits(int n) => n.toString().padLeft(2, '0');
   String minutes = duration.inMinutes.toString();
@@ -10,7 +13,8 @@ String formatDuration(Duration duration) {
   return '$minutes:$seconds';
 }
 
-class MusicItem extends StatelessWidget {
+
+class MusicItem extends ConsumerWidget {
   const MusicItem({
     super.key,
     required this.music,
@@ -21,7 +25,12 @@ class MusicItem extends StatelessWidget {
   final void Function(Music music) onSelectMusic;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    
+   final favoriteMusics = ref.watch(favoriteMusicProvider);
+
+    final isFavorite = favoriteMusics.contains(music);
+
     return Card(
       margin: const EdgeInsets.all(12),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -68,7 +77,7 @@ class MusicItem extends StatelessWidget {
                         ),
                         const Spacer(),
                         const SizedBox(width: 12),
-                        MusicItemTrait(icon: Icons.star_border_purple500, label: music.artist),
+                        MusicItemTrait(icon: isFavorite ? Icons.star : Icons.star_border_outlined, label: music.artist),
                       ],
                     )
                   ],

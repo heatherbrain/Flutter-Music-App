@@ -3,55 +3,25 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:meals_app/providers/filters_provider.dart';
 
-class FilterScreen extends ConsumerStatefulWidget {
-  const FilterScreen({super.key, required this.currentFilters});
-
-final Map<Filter, bool>currentFilters;
+class FilterScreen extends ConsumerWidget {
+  const FilterScreen({super.key});
 
   @override
-  ConsumerState<FilterScreen> createState() {
-    return _FilterScreenState();
-  }
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final activeFilters = ref.watch(filterProvider);
 
-class _FilterScreenState extends ConsumerState<FilterScreen> {
-  var _heartbrokenFilterSet = false;
-  var _vibingFilterSet = false;
-  @override
-  void initState() {
-    super.initState();
-    _heartbrokenFilterSet = widget.currentFilters[Filter.heartBroken]!;
-    _vibingFilterSet = widget.currentFilters[Filter.vibing]!;
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Your Filters'),
-      ),
-      // drawer: MainDrawer(onSelectScreen: (identifier) {
-      //   Navigator.of(context).pop();
-      //   if (identifier == 'music') {
-      //     Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => const TabsScreen()),);
-      //   }
-      // },),
-      body: WillPopScope(
-        onWillPop: () async {
-          Navigator.of(context).pop({
-            Filter.heartBroken: _heartbrokenFilterSet,
-            Filter.vibing: _vibingFilterSet,
-          });
-          return false;
-        },
-        child: Column(
+        appBar: AppBar(
+          title: const Text('Your Filters'),
+        ),
+        body: Column(
           children: [
             SwitchListTile(
-              value: _heartbrokenFilterSet,
+              value: activeFilters[Filter.heartBroken]!,
               onChanged: (isChecked) {
-                setState(() {
-                  _heartbrokenFilterSet = isChecked;
-                });
+                ref
+                    .read(filterProvider.notifier)
+                    .setFilter(Filter.heartBroken, isChecked);
               },
               title: Text(
                 'Heart-broken songs',
@@ -70,11 +40,11 @@ class _FilterScreenState extends ConsumerState<FilterScreen> {
               ),
             ),
             SwitchListTile(
-              value: _vibingFilterSet,
+              value: activeFilters[Filter.vibing]!,
               onChanged: (isChecked) {
-                setState(() {
-                  _vibingFilterSet = isChecked;
-                });
+                ref
+                    .read(filterProvider.notifier)
+                    .setFilter(Filter.vibing, isChecked);
               },
               title: Text(
                 'Vibing songs',
@@ -93,8 +63,6 @@ class _FilterScreenState extends ConsumerState<FilterScreen> {
               ),
             ),
           ],
-        ),
-      ),
-    );
+        ));
   }
 }
