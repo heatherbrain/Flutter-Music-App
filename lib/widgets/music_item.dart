@@ -1,89 +1,111 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/models/music.dart';
-import 'package:meals_app/widgets/music_item_trait.dart';
+import 'package:music_app/models/music.dart';
 import 'package:transparent_image/transparent_image.dart';
-
+ 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meals_app/providers/favorites_provider.dart';
-
+import 'package:music_app/providers/favorites_provider.dart';
+ 
 String formatDuration(Duration duration) {
   String twoDigits(int n) => n.toString().padLeft(2, '0');
   String minutes = duration.inMinutes.toString();
   String seconds = twoDigits(duration.inSeconds.remainder(60));
   return '$minutes:$seconds';
 }
-
-
+ 
 class MusicItem extends ConsumerWidget {
   const MusicItem({
     super.key,
     required this.music,
     required this.onSelectMusic,
   });
-
+ 
   final Music music;
   final void Function(Music music) onSelectMusic;
-
+ 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    
-   final favoriteMusics = ref.watch(favoriteMusicProvider);
-
+    final favoriteMusics = ref.watch(favoriteMusicProvider);
     final isFavorite = favoriteMusics.contains(music);
-
+ 
     return Card(
-      margin: const EdgeInsets.all(12),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      clipBehavior: Clip.hardEdge,
-      elevation: 2,
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      elevation: 3,
       child: InkWell(
-        onTap: () {onSelectMusic(music);},
-        child: Stack(
+        onTap: () => onSelectMusic(music),
+        child: Row(
           children: [
-            FadeInImage(
-              placeholder: MemoryImage(kTransparentImage),
-              image: NetworkImage(music.imageUrl),
-            ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Container(
-                color: Colors.black54,
-                padding:
-                    const EdgeInsets.symmetric(vertical: 6, horizontal: 44),
-                child: Column(
-                  children: [
-                    Text(
-                      music.title,
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                      softWrap: true,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        MusicItemTrait(
-                          icon: Icons.schedule,
-                          label: formatDuration(music.duration),
-                        ),
-                        const Spacer(),
-                        const SizedBox(width: 12),
-                        MusicItemTrait(icon: isFavorite ? Icons.star : Icons.star_border_outlined, label: music.artist),
-                      ],
-                    )
-                  ],
-                ),
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(12),
+                bottomLeft: Radius.circular(12),
               ),
-            )
+              child: FadeInImage(
+                placeholder: MemoryImage(kTransparentImage),
+                image: NetworkImage(music.imageUrl),
+                fit: BoxFit.cover,
+                width: 80,
+                height: 100,
+              ),
+            ),
+            const SizedBox(width: 12),
+            // Song details
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                 
+                  const SizedBox(width: 8),
+                  Text(
+                    music.title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    music.artist,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.schedule,
+                        color: Colors.grey[600],
+                        size: 18,
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        formatDuration(music.duration),
+                        style: TextStyle(color: Colors.grey[600], fontSize: 14),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 8),
+            IconButton(
+              icon: Icon(
+                isFavorite ? Icons.star : Icons.star_border,
+                color: isFavorite ? Colors.white : Colors.grey,
+              ),
+              onPressed: () {
+                ref
+                    .read(favoriteMusicProvider.notifier)
+                    .toggleMusicFavoriteStatus(music);
+              },
+            ),
           ],
         ),
       ),

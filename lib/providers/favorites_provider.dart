@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meals_app/models/music.dart';
+import 'package:music_app/models/music.dart';
 
 class FavoritesNotifier extends StateNotifier<List<Music>> {
   FavoritesNotifier() : super([]);

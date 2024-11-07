@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meals_app/providers/musics_provider.dart';
-import 'package:meals_app/screens/music_screen.dart';
+import 'package:music_app/providers/musics_provider.dart';
 
 enum Filter {
   heartBroken,

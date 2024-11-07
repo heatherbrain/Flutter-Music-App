@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/models/music.dart';
+import 'package:music_app/models/music.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meals_app/providers/favorites_provider.dart';
+import 'package:music_app/providers/favorites_provider.dart';
 
 class MusicLyrics extends ConsumerWidget {
   const MusicLyrics({

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/models/music.dart';
-import 'package:meals_app/screens/music_lyrics.dart';
-import 'package:meals_app/widgets/music_item.dart';
-
+import 'package:music_app/models/music.dart';
+import 'package:music_app/screens/music_lyrics.dart';
+import 'package:music_app/widgets/music_item.dart';
+ 
 class MusicScreen extends StatelessWidget {
   const MusicScreen({
     super.key,
     this.title,
     required this.musicScreen,
   });
-
+ 
   final String? title;
   final List<Music> musicScreen;
-
-
+ 
+ 
   void selectMusic(BuildContext context, Music music) {
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -22,11 +22,11 @@ class MusicScreen extends StatelessWidget {
               )),
     );
   }
-
+ 
   @override
   Widget build(BuildContext context) {
     Widget content;
-
+ 
     if (musicScreen.isEmpty) {
       content = Center(
         child: Column(
@@ -62,11 +62,11 @@ class MusicScreen extends StatelessWidget {
         ),
       );
     }
-
+ 
     if (title == null) {
       return content;
     }
-
+ 
     return Scaffold(
       appBar: AppBar(
         title: Text(title!),
